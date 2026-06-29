@@ -1,0 +1,252 @@
+:root {
+  --text: #153A2D;
+  --text-h: #0B3D2E;
+  --bg: #f6faf7;
+  --border: #dce8e1;
+  --code-bg: #f3faf6;
+  --accent: #0B3D2E;
+  --accent-bg: rgba(11, 61, 46, 0.09);
+  --accent-border: rgba(11, 61, 46, 0.25);
+  --social-bg: rgba(234, 246, 240, 0.7);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #f6faf7;
+  color: #153A2D;
+}
+
+#root {
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: none !important;
+  outline: none !important;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.thermo-app,
+.thermo-app * {
+  min-width: 0;
+}
+
+.thermo-app {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.thermo-app header,
+.thermo-app main,
+.thermo-app nav,
+.thermo-app .panel,
+.thermo-app .grid3,
+.thermo-app .processGrid,
+.thermo-app .fieldsGrid,
+.thermo-app .fieldsGrid2,
+.thermo-app .resultsGrid,
+.thermo-app .dualChartGrid,
+.thermo-app .actionRow {
+  max-width: 100%;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+@media (max-width: 980px) {
+  #root {
+    overflow-x: hidden;
+  }
+
+  .thermo-app main {
+    padding: 16px 12px;
+  }
+
+  .grid3 {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .panel {
+    min-height: auto !important;
+    padding: 18px !important;
+  }
+
+  .processGrid,
+  .fieldsGrid,
+  .fieldsGrid2,
+  .resultsGrid,
+  .dualChartGrid,
+  .graphTripleGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .processBtn,
+  .memoryButton,
+  .saveButton,
+  .resetButton,
+  .navItem,
+  .navItemActive,
+  .seg,
+  .segActive {
+    width: 100% !important;
+  }
+
+  .thermo-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .thermo-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .navItem,
+  .navItemActive {
+    flex: 1 1 120px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .panelHead,
+  .resultLabel,
+  .fieldLabel,
+  .chartHead,
+  .reportTitle,
+  .reportSub,
+  .historyLabel,
+  .historySub,
+  .refTitle,
+  .refText,
+  .modalTitle,
+  .modalText {
+    font-size: 13px !important;
+  }
+
+  .resultValue {
+    font-size: 20px !important;
+  }
+
+  .chartBox,
+  .panel,
+  .refCard,
+  .historyRow,
+  .memoryPanel {
+    border-radius: 14px !important;
+  }
+
+  .chartBox {
+    min-height: 260px !important;
+  }
+
+  .input,
+  .select {
+    font-size: 14px !important;
+  }
+
+  .toggleRow,
+  .actionRow,
+  .chartLegend,
+  .memoryStepLabel,
+  .memoryStepValue {
+    line-height: 1.4 !important;
+  }
+}

@@ -1,0 +1,163 @@
+// src/styles.js
+// Estilos inline centralizados. Paleta ESPE en tonos verde, rojo y blanco.
+
+export const S = {
+  app: { minHeight: "100vh", background: "#F4F8F4", color: "#153A2D", fontFamily: "'Inter', sans-serif", paddingBottom: 40 },
+  header: {
+    display: "flex", justifyContent: "space-between", alignItems: "center",
+    padding: "16px 28px", borderBottom: "1px solid #195C40", background: "#195C40",
+    position: "sticky", top: 0, zIndex: 10, flexWrap: "wrap", gap: 12,
+  },
+  headerLeft: { display: "flex", alignItems: "center", gap: 12 },
+  logoMark: { width: 36, height: 36, borderRadius: 8, background: "#0B3D2E", color: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 18 },
+  appTitle: { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 15, color: "#FFFFFF" },
+  appSub: { fontSize: 12, color: "#D7E9DE" },
+  nav: { display: "flex", gap: 4, background: "#0B3D2E", borderRadius: 10, padding: 4 },
+  navItem: { background: "transparent", border: "none", color: "#D7E9DE", padding: "8px 16px", borderRadius: 8, fontSize: 13, fontWeight: 500 },
+  navItemActive: { background: "#FFFFFF", border: "1px solid #0B3D2E", color: "#0B3D2E", padding: "8px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600 },
+
+  main: { padding: "24px 28px", maxWidth: 18000, width: "100%", margin: "0 auto", minHeight: "calc(100vh - 112px)" },
+
+  grid3: { display: "grid", gridTemplateColumns: "380px minmax(760px, 1fr) 360px", gap: 28, alignItems: "stretch" },
+
+  panel: { background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 14, padding: 24, minHeight: 620, boxShadow: "0 10px 24px rgba(11, 61, 46, 0.05)" },
+  panelHead: { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 14, marginBottom: 16, color: "#0B3D2E", letterSpacing: 0.3 },
+  panelHeadRow: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 },
+  statusBadge: { fontSize: 11, fontWeight: 600, padding: "4px 10px", borderRadius: 20 },
+
+  toggleRow: { marginBottom: 18 },
+  toggleLabel: { fontSize: 12, color: "#5F756B", display: "block", marginBottom: 8, fontWeight: 500 },
+  segmented: { display: "flex", background: "#EAF6F0", borderRadius: 8, padding: 3, gap: 2 },
+  seg: { flex: 1, background: "transparent", border: "none", color: "#0B3D2E", padding: "10px 12px", borderRadius: 6, fontSize: 13, fontWeight: 500 },
+  segActive: { flex: 1, background: "#0B3D2E", border: "none", color: "#FFFFFF", padding: "10px 12px", borderRadius: 6, fontSize: 13, fontWeight: 600 },
+
+  processGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 18 },
+  processBtn: { background: "#F3FAF6", border: "1px solid #DCE8E1", borderRadius: 12, padding: "16px 12px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4, color: "#0B3D2E", minHeight: 90 },
+  processBtnActive: { background: "#0B3D2E", border: "1px solid #0B3D2E", borderRadius: 12, padding: "16px 12px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4, color: "#FFFFFF", minHeight: 90 },
+  processIcon: { fontSize: 18 },
+  processLabel: { fontSize: 13, fontWeight: 700 },
+  processSub: { fontSize: 10, opacity: 0.82, fontFamily: "'JetBrains Mono', monospace" },
+
+  fieldsGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 8 },
+  fieldsGrid2: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 },
+  fieldLabel: { fontSize: 11, color: "#5F756B", display: "flex", justifyContent: "space-between", marginBottom: 6, fontFamily: "'JetBrains Mono', monospace" },
+  fieldUnit: { color: "#7E8E87", fontSize: 10 },
+  input: {
+    width: "100%", background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 10,
+    padding: "11px 12px", color: "#153A2D", fontSize: 13, fontFamily: "'JetBrains Mono', monospace",
+  },
+  fieldError: { color: "#C33A2F", fontSize: 10.5, marginTop: 4 },
+
+  vdwBox: { background: "#F8FCFA", border: "1px solid #DCE8E1", borderRadius: 10, padding: 14, marginTop: 8, marginBottom: 8 },
+  vdwLabel: { fontSize: 11, color: "#C33A2F", fontWeight: 600, marginBottom: 10, textTransform: "uppercase", letterSpacing: 0.5 },
+
+  actionRow: { display: "flex", flexDirection: "column", gap: 8, marginTop: 14 },
+  memoryButton: {
+    width: "100%", background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 12,
+    padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center",
+    color: "#153A2D", fontSize: 13, fontWeight: 600,
+  },
+  memoryButtonBadge: { background: "#EAF6F0", color: "#0B3D2E", fontSize: 11, padding: "4px 10px", borderRadius: 20, fontFamily: "'JetBrains Mono', monospace" },
+  saveButton: {
+    width: "100%", background: "#0B3D2E", border: "1px solid #0B3D2E", borderRadius: 12,
+    padding: "12px 14px", display: "flex", justifyContent: "center", alignItems: "center",
+    color: "#FFFFFF", fontSize: 13, fontWeight: 700,
+  },
+  resetButton: {
+    width: "100%", background: "#C33A2F", border: "1px solid #C33A2F", borderRadius: 12,
+    padding: "12px 14px", display: "flex", justifyContent: "center", alignItems: "center",
+    color: "#FFFFFF", fontSize: 13, fontWeight: 700,
+  },
+  gammaRow: { display: "flex", gap: 8 },
+  helperText: { fontSize: 10.5, color: "#6C7D75", marginTop: 6, lineHeight: 1.4 },
+  inputModeTag: {
+    flex: "0 0 auto", display: "flex", alignItems: "center", padding: "0 12px",
+    background: "#FFFFFF", border: "1px solid #C9D9CF", borderRadius: 8,
+    color: "#0B3D2E", fontSize: 13,
+  },
+  select: {
+    flex: 1, background: "#FFFFFF", border: "1px solid #C9D9CF", borderRadius: 8,
+    padding: "9px 10px", color: "#153A2D", fontSize: 12.5, fontFamily: "'Inter', sans-serif",
+  },
+  toast: {
+    position: "fixed", bottom: 28, left: "50%", transform: "translateX(-50%)",
+    background: "#EAF6F0", border: "1px solid #195C40", color: "#0B3D2E",
+    padding: "12px 22px", borderRadius: 10, fontSize: 13, fontWeight: 600,
+    zIndex: 80, transition: "opacity 0.3s, transform 0.3s", pointerEvents: "none",
+    marginLeft: "auto", marginRight: "auto",
+  },
+
+  resultsGrid: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 22 },
+  resultCard: { background: "#F3FAF6", border: "1px solid #DCE8E1", borderRadius: 12, padding: "14px 16px", transition: "border-color 0.3s, box-shadow 0.3s" },
+  resultLabel: { fontSize: 11, color: "#0B3D2E", marginBottom: 6, letterSpacing: "0.04em" },
+  resultValue: { fontSize: 18, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: "#0B3D2E" },
+  resultUnit: { fontSize: 11, color: "#5F756B", fontWeight: 500 },
+
+  chartBox: { background: "#F3FAF6", border: "1px solid #DCE8E1", borderRadius: 14, padding: 18, minHeight: 316 },
+  chartHead: { display: "flex", justifyContent: "space-between", fontSize: 12, color: "#0B3D2E", marginBottom: 12, fontWeight: 700 },
+  chartLegend: { fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+
+  refCard: { background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 12, padding: 16, marginBottom: 12 },
+  refTitle: { fontSize: 12, fontWeight: 700, color: "#0B3D2E", marginBottom: 8 },
+  refText: { fontSize: 12, color: "#6C7D75", lineHeight: 1.6 },
+  constRow: { display: "flex", justifyContent: "space-between", fontSize: 11.5, color: "#6C7D75", padding: "5px 0", borderBottom: "1px solid #E7EFEA" },
+  mono: { fontFamily: "'JetBrains Mono', monospace", color: "#153A2D" },
+
+  emptyState: { color: "#5F756B", fontSize: 13, padding: "40px 0", textAlign: "center" },
+
+  reportWrap: { display: "flex", flexDirection: "column", gap: 4 },
+  reportHeadRow: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16, flexWrap: "wrap", gap: 12 },
+  reportTitle: { fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 600, marginBottom: 4, color: "#0B3D2E" },
+  reportSub: { fontSize: 13, color: "#5F756B" },
+  twoColGrid: { display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 16, marginTop: 16 },
+  graphFullRow: { marginTop: 16 },
+  graphTripleGrid: { display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 16, marginTop: 16, alignItems: "start" },
+  dualChartGrid: { display: "grid", gridTemplateColumns: "1fr 280px", gap: 16 },
+  isoLegendRow: { display: "flex", fontSize: 10.5, fontFamily: "'JetBrains Mono', monospace", marginTop: 8, paddingTop: 8, borderTop: "1px solid #E7EFEA" },
+  compareRow: { display: "flex", justifyContent: "space-between", marginTop: 10, paddingTop: 10, borderTop: "1px solid #E7EFEA", gap: 10 },
+  compareItem: { display: "flex", flexDirection: "column", gap: 3, fontSize: 11 },
+
+  dataTable: { width: "100%", fontSize: 12.5, borderCollapse: "collapse" },
+  th: { textAlign: "left", color: "#5F756B", fontWeight: 500, padding: "6px 4px", borderBottom: "1px solid #E7EFEA", fontSize: 11 },
+  td: { padding: "8px 4px", borderBottom: "1px solid #E7EFEA", color: "#6C7D75" },
+  tdMono: { padding: "8px 4px", borderBottom: "1px solid #E7EFEA", fontFamily: "'JetBrains Mono', monospace", color: "#153A2D" },
+
+  statPill: { background: "#EAF6F0", color: "#0B3D2E", fontSize: 12, fontWeight: 600, padding: "6px 14px", borderRadius: 20, fontFamily: "'JetBrains Mono', monospace" },
+
+  historyList: { display: "flex", flexDirection: "column", gap: 8 },
+  historyRow: { display: "flex", alignItems: "center", gap: 16, background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 12, padding: "12px 16px" },
+  historyMain: { display: "flex", alignItems: "center", gap: 12, flex: 1, cursor: "pointer" },
+  historyBadge: { width: 36, height: 36, borderRadius: 8, background: "#EAF6F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15 },
+  historyLabel: { fontSize: 13, fontWeight: 600, marginBottom: 2, color: "#0B3D2E" },
+  historySub: { fontSize: 11.5, color: "#5F756B" },
+  historyStats: { display: "flex", gap: 20 },
+  historyStat: { display: "flex", flexDirection: "column", alignItems: "flex-end", fontSize: 11 },
+  historyStatLabel: { color: "#5F756B", fontSize: 10 },
+  historyDelete: { background: "transparent", border: "none", color: "#6C7D75", fontSize: 13, padding: 6 },
+
+  memoryOverlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 50, transition: "opacity 0.25s" },
+  memoryPanel: { position: "absolute", right: 0, top: 0, bottom: 0, width: "min(420px, 92vw)", background: "#FFFFFF", borderLeft: "1px solid #DCE8E1", padding: 24, overflowY: "auto", transition: "transform 0.3s ease" },
+  memoryHeader: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 },
+  memoryTitle: { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 16, color: "#0B3D2E" },
+  memorySub: { fontSize: 12, color: "#5F756B", marginTop: 2 },
+  iconButton: { background: "#F3FAF6", border: "1px solid #DCE8E1", color: "#5F756B", borderRadius: 8, width: 30, height: 30 },
+
+  memoryTimeline: { display: "flex", flexDirection: "column" },
+  memoryStep: { position: "relative", paddingLeft: 24, paddingBottom: 20 },
+  memoryDot: { position: "absolute", left: 0, top: 4, width: 10, height: 10, borderRadius: "50%", background: "#0B3D2E" },
+  memoryLine: { position: "absolute", left: 4, top: 14, bottom: -6, width: 1.5, background: "#DCE8E1" },
+  memoryContent: {},
+  memoryStepLabel: { fontSize: 12.5, fontWeight: 600, color: "#0B3D2E", marginBottom: 4 },
+  memoryFormula: { fontSize: 12, color: "#6C7D75", fontFamily: "'JetBrains Mono', monospace", marginBottom: 4 },
+  memoryStepValue: { fontSize: 13, color: "#0B3D2E", fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 },
+  memoryEmpty: { color: "#5F756B", fontSize: 13, textAlign: "center", padding: "40px 0" },
+
+  modalOverlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.65)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 60, padding: 20 },
+  modalBox: { background: "#FFFFFF", border: "1px solid #DCE8E1", borderRadius: 16, padding: 28, maxWidth: 420, boxShadow: "0 18px 40px rgba(11, 61, 46, 0.12)" },
+  modalIcon: { fontSize: 22, marginBottom: 12, color: "#C33A2F" },
+  modalTitle: { fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 16, marginBottom: 10, color: "#0B3D2E" },
+  modalText: { fontSize: 13, color: "#5F756B", lineHeight: 1.6, marginBottom: 22 },
+  modalActions: { display: "flex", gap: 10, justifyContent: "flex-end" },
+  modalBtnGhost: { background: "transparent", border: "1px solid #DCE8E1", color: "#5F756B", padding: "9px 16px", borderRadius: 8, fontSize: 13, fontWeight: 500 },
+  modalBtnPrimary: { background: "#0B3D2E", border: "none", color: "#FFFFFF", padding: "9px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600 },
+};
