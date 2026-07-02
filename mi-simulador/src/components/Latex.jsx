@@ -1,5 +1,3 @@
-// src/components/Latex.jsx
-// Renderiza una cadena LaTeX como notación matemática real, vía KaTeX.
 
 import { useState, useEffect, useRef } from "react";
 import { loadKatex } from "../hooks/useKatex";

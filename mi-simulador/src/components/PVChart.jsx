@@ -1,7 +1,3 @@
-// src/components/PVChart.jsx
-// Diagrama presión-volumen en SVG puro (sin librerías de gráficos externas).
-// Soporta modo simple (una sola curva) y modo comparación (reversible + irreversible
-// superpuestas, con el área entre ambas sombreada).
 
 export default function PVChart({
   curve,
@@ -29,8 +25,21 @@ export default function PVChart({
     isoLowCurve = mainCurve.map((pt) => ({ v: pt.v, p: isothermLow / pt.v }));
     allP.push(...isoHighCurve.map((p) => p.p), ...isoLowCurve.map((p) => p.p));
   }
-  const vMin = Math.min(...allV) * 0.92, vMax = Math.max(...allV) * 1.08;
-  const pMin = Math.min(...allP) * 0.9, pMax = Math.max(...allP) * 1.1;
+  let vMin = Math.min(...allV) * 0.92;
+  let vMax = Math.max(...allV) * 1.08;
+  let pMin = Math.min(...allP) * 0.9;
+  let pMax = Math.max(...allP) * 1.1;
+
+  const vRange = vMax - vMin || Math.max(1, Math.abs(vMin) * 0.1, Math.abs(vMax) * 0.1);
+  const pRange = pMax - pMin || Math.max(1, Math.abs(pMin) * 0.1, Math.abs(pMax) * 0.1);
+  if (vRange === 0) {
+    vMin -= 0.5;
+    vMax += 0.5;
+  }
+  if (pRange === 0) {
+    pMin -= 0.5;
+    pMax += 0.5;
+  }
 
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
   const x = (v) => PAD_L + ((v - vMin) / (vMax - vMin || 1)) * plotW;
@@ -39,7 +48,6 @@ export default function PVChart({
   const toPath = (arr) => arr.map((pt, i) => `${i === 0 ? "M" : "L"}${x(pt.v).toFixed(2)},${y(pt.p).toFixed(2)}`).join(" ");
   const start = mainCurve[0], end = mainCurve[mainCurve.length - 1];
 
-  // Marcas de escala: 5 divisiones en cada eje, con su valor numérico real
   const N_TICKS = 5;
   const vTicks = Array.from({ length: N_TICKS + 1 }, (_, i) => vMin + ((vMax - vMin) * i) / N_TICKS);
   const pTicks = Array.from({ length: N_TICKS + 1 }, (_, i) => pMin + ((pMax - pMin) * i) / N_TICKS);
@@ -88,18 +96,14 @@ export default function PVChart({
       )}
 
       {/* curva previa (fantasma) — solo aplica en modo simple */}
-      {!compareMode && prevCurve && prevCurve.length > 0 && (
-        <path d={toPath(prevCurve)} fill="none" stroke="#3A5048" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
-      )}
-
       {compareMode ? (
         <>
-          {/* Área sombreada entre ambas curvas, representando la diferencia de trabajo */}
+          {/* Área sombreada entre ambas curvas*/}
           <path d={`${toPath(curveRev)} ${toPath([...curveIrrev].reverse()).replace("M", "L")} Z`} fill="#9AB0A615" />
           {/* Curva reversible (continua, verde) */}
           <path d={toPath(curveRev)} fill="none" stroke="#0B3D2E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          {/* Curva irreversible (escalón, rojo punteado) */}
-          <path d={toPath(curveIrrev)} fill="none" stroke="#C33A2F" strokeWidth="2.5" strokeDasharray="7 5" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Curva irreversible (continua, rojo) */}
+          <path d={toPath(curveIrrev)} fill="none" stroke="#C33A2F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 
           {/* Puntos finales de cada trayectoria */}
           <circle cx={x(curveRev[curveRev.length - 1].v)} cy={y(curveRev[curveRev.length - 1].p)} r="5" fill="#0B3D2E" stroke="#FFFFFF" strokeWidth="1.5" />

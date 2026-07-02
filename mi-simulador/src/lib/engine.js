@@ -1,5 +1,3 @@
-// src/lib/engine.js
-// Constantes físicas y ecuaciones de estado — lógica pura, sin dependencias de React.
 
 export const R_ATM = 0.08206; // L·atm/(mol·K)
 export const R_J = 8.314;     // J/(mol·K)
@@ -11,7 +9,7 @@ export const GAS_PRESETS = {
   personalizado: { label: "Personalizado", gamma: null },
 };
 
-// Relación de Mayer: Cp - Cv = R, y γ = Cp/Cv  =>  Cv = R/(γ-1), Cp = γ·Cv
+
 export function gammaToCvCp(gamma) {
   const Cv = R_J / (gamma - 1);
   const Cp = gamma * Cv;
@@ -44,9 +42,6 @@ export function computeT(gasType, { n, P, V, a, b }) {
   return gasType === "real" ? temperatureVdW(n, P, V, a, b) : temperatureIdeal(n, P, V);
 }
 
-// Para Van der Waals, despejar V conociendo P es resolver una ecuación cúbica
-// sin solución algebraica simple — se resuelve numéricamente con Newton-Raphson,
-// partiendo de la aproximación de gas ideal como semilla inicial.
 export function solveVFromP(gasType, n, T, P, a, b) {
   if (gasType !== "real") return (n * R_ATM * T) / P;
   let V = (n * R_ATM * T) / P;

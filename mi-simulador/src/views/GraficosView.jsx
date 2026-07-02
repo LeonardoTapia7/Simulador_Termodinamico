@@ -30,11 +30,11 @@ export default function GraficosView({ result, state }) {
         <ResultCard labelTex="q \text{ (calor)}" value={result.q_J} unit="J" />
       </div>
 
-      <div style={S.graphFullRow}>
-        <div style={S.chartBox}>
-          <div style={S.chartHead}>
+      <div style={S.graphFullRow} className="graphFullRow">
+        <div style={S.chartBox} className="chartBox">
+          <div style={S.chartHead} className="chartHead">
             <span>Diagrama P–V — ambos caminos</span>
-            <span style={S.chartLegend}>
+            <span style={S.chartLegend} className="chartLegend">
               <span style={{ color: "#0B3D2E" }}>● Reversible</span>
               <span style={{ color: "#C33A2F", marginLeft: 12 }}>┄ Irreversible</span>
             </span>
@@ -75,8 +75,8 @@ export default function GraficosView({ result, state }) {
       </div>
 
       <div style={S.graphTripleGrid}>
-        <div style={S.chartBox}>
-          <div style={S.chartHead}>
+        <div style={S.chartBox} className="chartBox">
+          <div style={S.chartHead} className="chartHead">
             <span>Proceso {meta.label} (en vivo)</span>
           </div>
           <PistonDiagram V_i={state.V_i} V_f={result.inputs?.V_f} processType={state.processType} pathType={state.pathType} gasType={state.gasType} />

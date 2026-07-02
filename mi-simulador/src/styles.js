@@ -1,5 +1,3 @@
-// src/styles.js
-// Estilos inline centralizados. Paleta ESPE en tonos verde, rojo y blanco.
 
 export const S = {
   app: { minHeight: "100vh", background: "#F4F8F4", color: "#153A2D", fontFamily: "'Inter', sans-serif", paddingBottom: 40 },

@@ -1,6 +1,3 @@
-// src/ThermoSimulator.jsx
-// Componente raíz. Mantiene el estado global del formulario, ejecuta la validación
-// y el motor de cálculo, y orquesta la navegación entre las 3 vistas y los modales.
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import SimuladorView from "./views/SimuladorView";
@@ -44,9 +41,6 @@ export default function ThermoSimulator() {
       errs.Cp = "Cp debe ser mayor que Cv";
     }
 
-    // Variable final: en isocórico se pide T_f o P_f según el combobox (V no
-    // cambia); en isobárico siempre V_f o T_f (P_f=P_i ya está fijo); en
-    // isotérmico/adiabático depende del combobox (Volúmenes → V_f, Presiones → P_f).
     if (state.processType === "isocorico") {
       if (state.inputMode === "presiones") {
         const pf = validateField("P", state.P_f);
@@ -79,8 +73,7 @@ export default function ThermoSimulator() {
       }
     }
 
-    // P_ext se necesita en cualquier proceso con camino irreversible, excepto
-    // isocórico (donde W=0 siempre, sin importar el camino).
+
     if (state.pathType === "irreversible" && state.processType !== "isocorico") {
       const pe = validateField("Pext", state.P_ext);
       if (!pe.valid) errs.P_ext = pe.error;
@@ -111,7 +104,6 @@ export default function ThermoSimulator() {
     }
   }, [state, errors]);
 
-  // Guarda la curva anterior para mostrarla como "fantasma" tras cada recálculo.
   useEffect(() => {
     if (result) {
       if (lastResultRef.current) setPrevCurve(lastResultRef.current.curve);

@@ -1,6 +1,3 @@
-// src/components/PistonDiagram.jsx
-// Ilustración SVG de un cilindro con pistón. Se anima suavemente cada vez que
-// cambian V_i o V_f, indicando con una flecha si el proceso es expansión o compresión.
 
 export default function PistonDiagram({ V_i: V_i_raw, V_f: V_f_raw, processType, pathType, gasType }) {
   const V_i = parseFloat(V_i_raw);
@@ -9,8 +6,6 @@ export default function PistonDiagram({ V_i: V_i_raw, V_f: V_f_raw, processType,
   const cylTop = 30, cylBottom = H - 40, cylLeft = 55, cylRight = W - 55;
   const cylHeight = cylBottom - cylTop;
 
-  // Normalizamos V_i/V_f contra un rango visual fijo para que el pistón
-  // siempre quede dentro del cilindro, sin importar la escala real en litros.
   const allV = [V_i, V_f].filter((v) => !isNaN(v) && v > 0);
   const vMin = Math.min(...allV) * 0.85 || 1;
   const vMax = Math.max(...allV) * 1.15 || 10;

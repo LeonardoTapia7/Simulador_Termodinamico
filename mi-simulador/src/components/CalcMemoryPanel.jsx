@@ -1,7 +1,3 @@
-// src/components/CalcMemoryPanel.jsx
-// Panel lateral deslizable que muestra cada paso del cálculo en orden, con su
-// fórmula en LaTeX y el resultado numérico — separado de la interfaz principal
-// para no saturarla con notación matemática.
 
 import Latex from "./Latex";
 import { fmt } from "../lib/format";

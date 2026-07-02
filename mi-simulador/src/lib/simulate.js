@@ -1,9 +1,3 @@
-// src/lib/simulate.js
-// Motor principal: dado el estado completo de inputs, calcula resultados, curva P-V
-// y la lista de pasos para la Memoria de Cálculo.
-//
-// Convención de signos (IUPAC): W > 0 cuando se realiza trabajo SOBRE el sistema
-// (compresión); W < 0 cuando el sistema realiza trabajo sobre el entorno (expansión).
 
 import { R_ATM, LITER_ATM_TO_J, computeP, computeT, solveVFromP } from "./engine";
 
@@ -21,13 +15,7 @@ export function runSimulation(state) {
   const gp = { n, a, b };
   const gamma = Cp / Cv;
 
-  // Resolución de V_f / T_f según el combobox "Tipo de entrada":
-  // - Isotérmico/Adiabático: el usuario puede dar V_f directamente, o dar P_f
-  //   y que V_f se derive con la ecuación de estado / relación adiabática.
-  // - Isocórico (V_f=V_i siempre): el combobox ofrece T_f o P_f como dato final,
-  //   ya que ambos determinan el mismo estado y están ligados por PV=nRT a V constante.
-  // - Isobárico (P_f=P_i siempre): el combobox ofrece V_f o T_f como dato final,
-  //   ambos ligados por la ley de Charles (V/T=cte a P constante).
+
   let V_f, T_f_isocoricoInput;
   if (processType === "isocorico") {
     V_f = V_i; // fijo por definición
@@ -206,7 +194,7 @@ export function runSimulation(state) {
     pushStep("Entalpía", "\\Delta H = \\Delta U + \\Delta(PV)", dH_J, "J");
   }
 
-  // ---- Curvas P-V (reversible e irreversible, calculadas siempre en paralelo) ----
+ 
   const N = 48;
 
   const curveRev = [];
@@ -221,9 +209,6 @@ export function runSimulation(state) {
     curveRev.push({ v: Vj, p: Pj });
   }
 
-  // Curva irreversible (escalón): la presión cambia instantáneamente antes de
-  // que el volumen varíe. En isocórico no aplica P_ext (W=0 siempre): la curva
-  // "irreversible" coincide con P_f real.
   const PextForCurve = processType === "isocorico" ? P_f : P_ext > 0 ? P_ext : P_f;
   const curveIrrev = [
     { v: V_i, p: P_i },
@@ -233,8 +218,6 @@ export function runSimulation(state) {
 
   const curve = pathType === "reversible" ? curveRev : curveIrrev;
 
-  // Trabajo de ambos caminos, calculado de forma independiente al pathType activo,
-  // únicamente para fines de comparación visual en la vista de Gráficos.
   let W_rev_J, W_irrev_J;
   if (processType === "isotermico") {
     W_rev_J = -n * R_ATM * T_i * Math.log(V_f / V_i) * LITER_ATM_TO_J;

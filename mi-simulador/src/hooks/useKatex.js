@@ -1,5 +1,3 @@
-// src/hooks/useKatex.js
-// Carga el script y CSS de KaTeX desde CDN una sola vez (promesa memoizada a nivel de módulo).
 
 let katexLoadPromise = null;
 

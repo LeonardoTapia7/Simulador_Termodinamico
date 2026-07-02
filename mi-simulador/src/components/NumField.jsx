@@ -1,5 +1,3 @@
-// src/components/NumField.jsx
-// Campo numérico controlado: etiqueta en LaTeX, unidad, y mensaje de error bajo el campo.
 
 import Latex from "./Latex";
 import { S } from "../styles";

@@ -1,9 +1,3 @@
-// src/components/ConfirmReplaceModal.jsx
-// Modal de confirmación genérico, usado en dos contextos:
-//  - mode="load"  → al cargar un registro del historial (reemplaza el estado activo)
-//  - mode="reset" → al pulsar "Reiniciar valores" (vuelve a los valores estándar)
-// En ambos casos, el estado activo se guarda automáticamente en el historial antes
-// de proceder, así que la confirmación es solo informativa, no destructiva.
 
 import { S } from "../styles";
 

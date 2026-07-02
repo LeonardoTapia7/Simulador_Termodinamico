@@ -22,15 +22,15 @@ export default function SimuladorView({ state, setState, errors, result, prevCur
     const toInputStr = (num) => (num === null || num === undefined || isNaN(num) ? "" : num.toFixed(4));
     const patch = { inputMode: newMode };
     if (state.processType === "isocorico") {
-      // Temperatura  Presión, ambos describen el mismo estado final
+    
       if (newMode === "presiones") patch.P_f = toInputStr(result.P_f);
       else patch.T_f = toInputStr(result.T_f);
     } else if (state.processType === "isobarico") {
-      // Volumen Temperatura, ambos describen el mismo estado final (P=cte)
+   
       if (newMode === "temperaturas") patch.T_f = toInputStr(result.T_f);
       else patch.V_f = toInputStr(result.inputs?.V_f);
     } else {
-      // Isotérmico / Adiabático: Volumen  Presión
+   
       if (newMode === "presiones") patch.P_f = toInputStr(result.P_f);
       else patch.V_f = toInputStr(result.inputs?.V_f);
     }
@@ -80,7 +80,7 @@ export default function SimuladorView({ state, setState, errors, result, prevCur
           </div>
         </div>
 
-        {/* Combobox "Tipo de entrada" — varía según qué variable está fija por definición del proceso */}
+        {/* Combobox "Tipo de entrada" varía según qué variable está fija por definición del proceso */}
         {(state.processType === "isotermico" || state.processType === "adiabatico") && (
           <div style={S.toggleRow} className="toggleRow">
             <span style={S.toggleLabel}>Tipo de entrada</span>
@@ -163,7 +163,7 @@ export default function SimuladorView({ state, setState, errors, result, prevCur
           )}
         </div>
 
-        {/* Atajo opcional: autocompleta Cv/Cp sin bloquear edición manual */}
+        {/* Atajo opcional: autocompleta Cv/Cp */}
         <div style={S.toggleRow}>
           <span style={S.toggleLabel}>Tipo de gas — autocompleta Cv/Cp</span>
           <div style={S.gammaRow}>
@@ -228,11 +228,11 @@ export default function SimuladorView({ state, setState, errors, result, prevCur
               <ResultCard labelTex="\Delta H" value={result.dH_J} unit="J" />
             </div>
 
-            <div style={S.dualChartGrid}>
-              <div style={S.chartBox}>
-                <div style={S.chartHead}>
+            <div style={S.dualChartGrid} className="dualChartGrid">
+              <div style={S.chartBox} className="chartBox">
+                <div style={S.chartHead} className="chartHead">
                   <span>Diagrama P–V</span>
-                  <span style={S.chartLegend}>
+                  <span style={S.chartLegend} className="chartLegend">
                     <span style={{ color: state.pathType === "reversible" ? "#0B3D2E" : "#6E7C74" }}>● Reversible</span>
                     <span style={{ color: state.pathType === "irreversible" ? "#C33A2F" : "#6E7C74", marginLeft: 12 }}>● Irreversible</span>
                   </span>
@@ -246,8 +246,8 @@ export default function SimuladorView({ state, setState, errors, result, prevCur
                   isothermLow={result.isothermLow}
                 />
               </div>
-              <div style={S.chartBox}>
-                <div style={S.chartHead}>
+              <div style={S.chartBox} className="chartBox">
+                <div style={S.chartHead} className="chartHead">
                   <span>Pistón</span>
                 </div>
                 <PistonDiagram V_i={state.V_i} V_f={result.inputs?.V_f} processType={state.processType} pathType={state.pathType} gasType={state.gasType} />

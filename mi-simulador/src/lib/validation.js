@@ -1,5 +1,3 @@
-// src/lib/validation.js
-// Validación de campos numéricos: solo números, sin negativos, dentro de rangos físicos razonables.
 
 export const LIMITS = {
   n: { min: 1e-6, max: 1000, label: "n" },

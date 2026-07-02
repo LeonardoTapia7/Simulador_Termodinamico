@@ -1,6 +1,3 @@
-// src/components/ResultCard.jsx
-// Tarjeta de resultado numérico. Emite un breve "flash" de color en su borde
-// cada vez que el valor cambia, dando retroalimentación visual del recálculo.
 
 import { useState, useEffect, useRef } from "react";
 import Latex from "./Latex";

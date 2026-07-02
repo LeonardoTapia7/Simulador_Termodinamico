@@ -1,6 +1,3 @@
-// src/lib/format.js
-// Formato de números para mostrar en la interfaz (no usar para reconstruir inputs:
-// usa toFixed directo para eso, ya que fmt aplica notación regional/exponencial).
 
 export function fmt(v, decimals = 2) {
   if (v === null || v === undefined || isNaN(v)) return "—";
